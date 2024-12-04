@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Search Posts{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-4 bg-white rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Search Posts</h1>
+    <form method="get" action="{% url 'search_post' %}">
+        <div class="mb-4">
+            <input type="text" name="q" type="search" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Search posts...">
+        </div>
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600">Search</button>
+    </form>
+    {% if posts %}
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-2">Results</h2>
+            <ul>
+                {% for post in posts %}
+                    <li class="mb-2">
+                        <a href="{% url 'post_detail' post.id %}" class="text-blue-500 hover:underline">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

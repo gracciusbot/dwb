@@ -1,0 +1,69 @@
+<nav class="navbar navbar-md d-none d-lg-flex flex-column vh-100">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-3 text-center" href="{% url 'home' %}">
+            <strong>Blog App</strong>
+        </a>
+        <ul class="navbar-nav flex-column w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'create_post' %}">Create Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+        </ul>
+        <div class="mt-auto">
+            <button class="btn btn-secondary w-100" onclick="toggleTheme()">Toggle Theme</button>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<nav class="navbar fixed-bottom navbar-expand-lg d-lg-none">
+    <nav class="navbar fixed-bottom navbar-expand-lg d-lg-none">
+        <div class="container-fluid justify-content-between">
+            <!-- Home -->
+            <a class="nav-link text-center" href="{% url 'home' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                    <path d="M8.354 1.146a.5.5 0 0 1 .292.708l-6 10a.5.5 0 0 1-.832 0l-6-10a.5.5 0 0 1 .832-.708L8 10.293l5.646-9.146a.5.5 0 0 1 .708-.708ZM1.5 10.5h13v4a.5.5 0 0 1-.5.5h-12a.5.5 0 0 1-.5-.5v-4Z"/>
+                </svg>
+                <span>Home</span>
+            </a>
+    
+            <!-- Create -->
+            <a class="nav-link text-center" href="{% url 'create_post' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-4Zm1 .5V7h3V5H9Zm-4.5 0h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 0 1ZM4 8v3a.5.5 0 0 1-1 0V8H1.5a.5.5 0 0 1 0-1H3V4.5a.5.5 0 0 1 1 0V7h3a.5.5 0 0 1 0 1H4Z"/>
+                </svg>
+                <span>Create</span>
+            </a>
+    
+            <!-- Login -->
+            <a class="nav-link text-center" href="{% url 'home' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3h1v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V3a1 1 0 0 0-1 1h-4a1 1 0 0 0-1 1v3H6V3ZM8 7.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5ZM8 9.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5Z"/>
+                </svg>
+                <span>Notifications</span>
+            </a>
+    
+            <!-- Profile -->
+            {% if request.user.is_authenticated %}
+            <a class="nav-link text-center" href="{% url 'profile' request.user.username %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6.042C2.395 12.936 4.275 12 8 12s5.605.936 5.784 2.042C13.602 14.624 12.156 16 8 16s-5.602-1.376-5.784-1.958Z"/>
+                </svg>
+                <span>Profile</span>
+            </a>
+            {% endif %}
+
+        </div>
+    </nav>
+    
+</nav>

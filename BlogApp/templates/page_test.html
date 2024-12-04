@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Test Page{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3>Test Modal</h3>
+
+    <!-- Botão para abrir o modal -->
+    <button class="btn btn-primary" onclick="loadPostDetails(1)">Open Post Details</button>
+</div>
+
+<!-- Modal de Detalhes do Post -->
+<div class="modal fade" id="postDetailModal" tabindex="-1" aria-labelledby="postDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postDetailModalLabel">Post Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="post-detail-content">
+                    <!-- Conteúdo do post será carregado aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simulação de post para o teste
+    document.addEventListener('DOMContentLoaded', function () {
+        loadPostDetails = (postId) => {
+            const post = {
+                id: postId,
+                author: { username: 'testuser', profile: { photo: 'default-profile.png' } },
+                title: 'Test Post',
+                content: 'This is a test post content.',
+                created_at: '2024-12-03',
+                comments: [],
+            };
+
+            openModal(post);
+        };
+    });
+</script>
+{% endblock %}

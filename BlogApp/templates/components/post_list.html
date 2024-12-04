@@ -1,0 +1,46 @@
+{% load static %}
+<script type="module" src="{% static 'js/postModal.js' %}"></script>
+
+<div class="container-fluid d-flex flex-column align-items-center">
+    {% for post in posts %}
+        <div class="col-12 col-md-8 mb-4 post-item">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <!-- Detalhes do Autor -->
+                    <div class="d-flex align-items-center mb-3 justify-content-between">
+                        <!-- Imagem do autor -->
+                        {% if post.author.profile.photo %}
+                            <img src="{{ post.author.profile.photo.url }}" alt="{{ post.author.username }}" class="rounded-circle border" style="width: 50px; height: 50px;">
+                        {% else %}
+                            <img src="{% static 'default-profile.png' %}" alt="{{ post.author.username }}" class="rounded-circle border" style="width: 50px; height: 50px;">
+                        {% endif %}
+                        
+                        <div class="ms-3">
+                            <a href="{% url 'profile' post.author.username %}" class="text-primary fw-bold text-decoration-none">{{ post.author.username }}</a>
+                        </div>
+
+                        <!-- Botão Follow (alinhado à direita) -->
+                        <div class="ms-auto">
+                            {% if profile.user != request.user %}
+                                <button class="btn btn-sm {% if is_following %}btn-outline-danger{% else %}btn-outline-primary{% endif %}" id="follow-button">
+                                    {% if is_following %}Unfollow{% else %}Follow{% endif %}
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- Título e Imagem do Post -->
+                    <h3 class="card-title text-dark">{{ post.title }}</h3>
+                    {% if post.photo_post %}
+                        <img src="{{ post.photo_post.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-3">
+                    {% endif %}
+
+                    <!-- Botão "Read More" -->
+                    <div class="text-center mt-3">
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#postDetailModal" data-post-id="{{ post.id }}">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

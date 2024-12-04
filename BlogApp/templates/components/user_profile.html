@@ -1,0 +1,16 @@
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <h2 class="card-title text-center">Your Profile</h2>
+        <div class="d-flex align-items-center mb-3">
+            {% if request.user.profile.photo %}
+                <img src="{{ request.user.profile.photo.url }}" alt="{{ request.user.username }}" class="rounded-circle" style="width: 50px; height: 50px;">
+            {% else %}
+                <img src="default-profile.png" alt="Default Profile" class="rounded-circle" style="width: 50px; height: 50px;">
+            {% endif %}
+            <div class="ms-3">
+                <a href="{% url 'profile' request.user.username %}" class="text-primary fw-bold">{{ request.user.username }}</a>
+                <span class="text-muted"> - {{ request.user.profile.followers_count }} followers</span>
+            </div>
+        </div>
+    </div>
+</div>

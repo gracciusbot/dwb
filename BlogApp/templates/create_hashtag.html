@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Hashtag{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Create a New Hashtag</h1>
+                    <form action="{% url 'create_hashtag' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Hashtag Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Create Hashtag</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</write_to_file>
+
+[Response interrupted by a tool use result. Only one tool may be used at a time and should be placed at the end of the message.]

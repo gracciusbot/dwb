@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+ <!-- Adicione esta linha no início do arquivo -->
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Navbar Lateral -->
+    {% include 'components/navbar.html' %}
+    <!-- Inclui os formulários de busca -->
+    {% include 'components/search_forms.html' %}
+
+    
+    <!-- Lista de posts -->
+    <div class="mt-5">
+        {% include 'components/post_list.html' %}
+    </div>
+
+    <!-- Hashtags populares -->
+    <div class="mt-5">
+        {% include 'components/popular_hashtags.html' %}
+    </div>
+
+    <!-- Perfil do usuário -->
+    <div class="mt-5">
+        {% include 'components/user_profile.html' %}
+    </div>
+
+</div>
+
+<!-- Modal de Detalhes do Post -->
+{% include 'components/post_detail_modal.html' %}
+
+<!-- Modal de criação de post -->
+{% include 'components/create_post_modal.html' %}
+
+{% endblock %}

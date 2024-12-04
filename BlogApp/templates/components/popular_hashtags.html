@@ -1,0 +1,15 @@
+<div class="card border-0 shadow-sm">
+    <div class="card-body">
+        <h2 class="card-title text-center">Popular Hashtags</h2>
+        <ul class="list-group">
+            {% for hashtag in popular_hashtags %}
+                <li class="list-group-item">
+                    <a href="{% url 'search_post' %}?q={{ hashtag.name }}" class="text-primary fw-bold">#{{ hashtag.name }}</a>
+                    <span class="text-muted">{{ hashtag.posts.count }} posts</span>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-muted">No hashtags available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

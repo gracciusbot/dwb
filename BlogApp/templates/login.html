@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Login</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" autocomplete="email" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Entrar</button>
+                    </form>
+                    
+                    {% if form.errors %}
+                        <div class="alert alert-danger mt-4">
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="text-center mt-3">
+                        <p class="mb-0"> <a href="{% url 'register' %}" class="text-primary">Registre-se</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
