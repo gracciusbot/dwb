@@ -69,5 +69,3 @@ pip install -r requirements.txt
 ## Contribuição
 Sinta-se à vontade para contribuir para este projeto enviando pull requests ou abrindo issues no repositório do GitHub.
 
-## Licença
-Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
